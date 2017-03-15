@@ -22,8 +22,10 @@ data = data.apply(lambda x: x.str.strip()).replace('', numpy.nan)
 data['lifeexpectancy'] = data['lifeexpectancy'].convert_objects(convert_numeric=True)
 data['urbanrate'] = data['urbanrate'].convert_objects(convert_numeric=True)
 
+#Remove Na values. Not supported with pearson
 data_clean=data.dropna()
 
+#Pearson Correlation Coefficient Test
 print ('##########Association between urbanrate and lifeexpectancy###########')
 print(scipy.stats.pearsonr(data_clean['urbanrate'], data_clean['lifeexpectancy']))
 
